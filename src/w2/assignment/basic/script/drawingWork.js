@@ -85,6 +85,9 @@ function draw() {
   fill('lightblue');
   noStroke();
   rect(591, 290, 18, 70);
+  fill('moccasin');
+  noStroke();
+  rect(615, 290, 18, 70);
 
   //   책상
   fill('white');
@@ -161,5 +164,15 @@ function draw() {
   fill('white');
   rect(740, 120, 80, 50);
 
-  // 전등
+  // 침대
+  rectMode(CENTER);
+  noStroke();
+  fill('blanchedalmond');
+  rect(810, 400, 250, 200);
+  fill('white');
+  rect(810, 440, 250, 120);
+  fill(220);
+  rect(810, 375, 100, 60, 10);
+  fill('moccasin');
+  rect(810, 460, 250, 110);
 }
