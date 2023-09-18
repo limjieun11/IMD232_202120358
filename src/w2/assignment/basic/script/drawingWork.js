@@ -154,6 +154,12 @@ function draw() {
   line(570, 190, 570, 202);
 
   // 액자
+  rectMode(CENTER);
+  noStroke();
+  fill('saddlebrown');
+  rect(740, 120, 90, 60);
+  fill('white');
+  rect(740, 120, 80, 50);
 
   // 전등
 }
