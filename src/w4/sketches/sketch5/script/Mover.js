@@ -13,7 +13,7 @@ class Mover {
     let forceDividedByMass = createVector(force.x, force.y);
     forceDividedByMass.div(this.mass);
 
-    this.acc.add(force);
+    this.acc.add(forceDividedByMass);
   }
 
   update() {

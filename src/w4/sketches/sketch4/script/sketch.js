@@ -10,6 +10,7 @@ function setup() {
   moverB = new Mover((2 * width) / 3, height / 2, 1);
   gravity = createVector(0, 0.1);
   wind = createVector(0.2, 0);
+
   // 중력에 대한 묘사는 사실과는 거리가 멀지만 바람에 대한 묘사는 정확하다.
   // 중력가속도는 고정이다 : 9.80066m/s2 -> ACC (a)
   // f=m*a -> f/m = a

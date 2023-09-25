@@ -13,7 +13,7 @@ class Mover {
     let forceDividedByMass = createVector(force.x, force.y);
     forceDividedByMass.div(this.mass);
 
-    this.acc.add(force);
+    this.acc.add(forceDividedByMass);
   }
 
   update() {
@@ -24,18 +24,18 @@ class Mover {
   }
 
   checkEdges() {
+    // this.pos.x = 0;
+    // this.vel.x *= 1;
+    // 작동은 하지만 아주 정확한 방식의 묘사는 아님
+
+    // 0보다 얼마나 뚫고 갔는가?
+    //   let delta = this.pos.x - 0;
+    //   그 뚫고간 거리에 -1을 곱해 방향을 뒤집고,
+    //   delta *= -1;
+    //   0을 기준으로 뒤집힌 거리를 더해준다.
+    //   this.pos.x = 0 + delta;
+
     if (this.pos.x < 0) {
-      // this.pos.x = 0;
-      // this.vel.x *= 1;
-      // 작동은 하지만 아주 정확한 방식의 묘사는 아님
-
-      // 0보다 얼마나 뚫고 갔는가?
-      //   let delta = this.pos.x - 0;
-      //   그 뚫고간 거리에 -1을 곱해 방향을 뒤집고,
-      //   delta *= -1;
-      //   0을 기준으로 뒤집힌 거리를 더해준다.
-      //   this.pos.x = 0 + delta;
-
       this.pos.x -= 0;
       this.pos.x *= -1;
       this.pos.x += 0;
