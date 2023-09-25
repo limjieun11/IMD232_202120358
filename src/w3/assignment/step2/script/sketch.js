@@ -39,21 +39,13 @@ function draw() {
   vel.y += acc.y;
   pos.x += vel.x;
   pos.y += vel.y;
-
-  if (mouseIsPressed && isMouseInsideCanvas()) {
-    // target.mult(-1);
-    // acc = target.copy();
-    acc = p5.Vector.sub(position, target);
-    acc.normalize();
-    acc.mult(0.1);
-  }
 }
 
 function update() {
   // acc = p5.Vector.random2D();
   // acc.mult(0.5);
   vel.add(acc);
-  vel.limit(2);
+  vel.limit(3);
   pos.add(vel);
 }
 
