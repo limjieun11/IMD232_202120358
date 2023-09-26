@@ -12,7 +12,6 @@ class Mover {
     // force.div(this.mass);
     let forceDividedByMass = createVector(force.x, force.y);
     forceDividedByMass.div(this.mass);
-
     this.acc.add(forceDividedByMass);
   }
 
@@ -23,10 +22,17 @@ class Mover {
     this.acc.mult(0);
   }
 
+  contactEdge() {
+    if (this.pos.y >= height - 1 - this.radius) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   checkEdges() {
     // 기존에 여기에서 딱 반지름 만큼에 접촉을 고려한 코드
     // +this.radius -this.radius 반영 -> 각 공마다 자신의 radius를 반영해서 튕기도록 됨.
-    const bounce = -0.25;
+    const bounce = -0.9;
     if (this.pos.x < 0 + this.radius) {
       this.pos.x -= 0 + this.radius;
       this.pos.x *= -1;
@@ -38,7 +44,7 @@ class Mover {
       this.pos.x += width - 1 - this.radius;
       this.vel.x *= bounce;
     }
-    if (this.pos.y > height - 1) {
+    if (this.pos.y > height - 1 - this.radius) {
       this.pos.y -= height - 1 - this.radius;
       this.pos.y *= -1;
       this.pos.y += height - 1 - this.radius;
