@@ -21,24 +21,33 @@ class Pendulum {
       (sin(this.angle - (TAU / 360) * 90) * -gravity.y) / this.length;
   }
 
-  update() {
+  update(fixedPoint) {
     if (!this.isDragging) {
       this.angleVel += this.angleAcc;
       this.angle += this.angleVel;
       this.angleVel *= 0.998;
     }
+
     this.ballPos.set(
       cos(this.angle) * this.length + this.pos.x,
       sin(this.angle) * this.length + this.pos.y
     );
+
+    if (fixedPoint) {
+      this.pos.set(fixedPoint.x, fixedPoint.y);
+    }
   }
 
   display() {
+    const ballPos = createVector(
+      cos(this.angle) * this.length + this.pos.x,
+      sin(this.angle) * this.length + this.pos.y
+    );
     noStroke();
     fill(127);
     ellipse(this.pos.x, this.pos.y, 20);
     if (this.isDragging) {
-      fill('#ff0000');
+      fill('#0000ff');
     } else if (this.isHover) {
       fill(127);
     } else {
