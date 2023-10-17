@@ -1,21 +1,126 @@
-let aVariable = 20;
-let anArray = [30, 60, 90];
-let anotherArray = [];
-// anArray 가 하나의 변수가 아닌 여러개의 변수 값을 가지고 있고 적어준 순서대로 0,1,2,3 번호를 매기고
-// 꺼내서 보여줌 번호는 0부터 시작
-// anArray.length -> 몇개의 변수가 저장되어 있다
-// array -> array.push 기능 : 사후적으로 array에 데이터를 넣어줄 수 있는 기능
+// let pos = [];
+// let vel = []; -> 클래스로 만들 수 있다.
+class Emitter {
+  constructor(emittingPosX, emittingPosY) {
+    this.emittingPos = createVector(emittingPosX, emittingPosY);
+    this.balls = [];
+  }
+
+  createBall() {
+    this.balls.push(
+      new Ball(
+        this.emittingPos.x,
+        this.emittingPos.y,
+        random(1, 5),
+        random(360),
+        100,
+        50
+      )
+    );
+  }
+
+  applyGravity(gravity) {
+    this.balls.forEach((each) => {
+      const scaledG = p5.Vector.mult(gravity, each.mass);
+      each.applyForce(scaledG);
+    });
+  }
+
+  applyForce(force) {
+    this.balls.forEach((each) => {
+      each.applyForce(force);
+    });
+  }
+
+  update() {
+    this.balls.forEach((each) => {
+      each.update();
+    });
+  }
+
+  display() {
+    this.balls.forEach((each) => {
+      each.display();
+    });
+  }
+}
+
+class Ball {
+  constructor(posX, posY, mass, h, s, l) {
+    this.pos = createVector(posX, posY);
+    this.vel = createVector();
+    this.acc = createVector();
+    this.mass = mass;
+    this.rad = this.mass * 5;
+    this.color = color(h, s, l);
+  }
+
+  // 외부에서 힘을 받아야함
+  applyForce(force) {
+    const calcedAcc = p5.Vector.div(force, this.mass);
+    // 힘이 복사된 상태로 힘이 그대로 간다.
+    // const calcedAcc = force.div(this.mass);
+    // 힘이 누군가를 준 상태로 누적된다.
+    this.acc.add(calcedAcc);
+  }
+
+  update() {
+    this.vel.add(this.acc);
+    // this.vel.limit(5);
+    this.pos.add(this.vel);
+
+    // this.acc.set(0, 0);
+    this.acc.mult(0);
+    // this.acc.setMag(0);
+  }
+
+  display() {
+    fill(this.color);
+    noStroke();
+    ellipse(this.pos.x, this.pos.y, 2 * this.rad);
+  }
+}
+
+let emitter;
+let balls = [];
+let gravity;
+let wind;
 
 function setup() {
-  setCanvasContainer('canvas', 3, 2, true);
-  console.log('anArray', aVariable);
-  console.log('anArray[0]', anArray[0]);
-  console.log('anArray[1]', anArray[1]);
-  console.log('anArray[2]', anArray[2]);
-  console.log('anArray.length', anArray.length);
-  anotherArray.push(10);
-  console.log('anotherArray[0]', anotherArray[0]);
+  setCanvasContainer('canvas', 2, 1, true);
+
+  colorMode(HSL, 360, 100, 100);
+
+  emitter = new Emitter(width / 2, 0);
+
+  for (let n = 0; n < 10; n++) {
+    balls.push(new Ball(random(width), 0, random(1, 20), random(360), 100, 50));
+  }
+
+  gravity = createVector(0, 0.1);
+  wind = createVector(0.5, 0);
 
   background(255);
 }
-function draw() {}
+function draw() {
+  background(255);
+  balls.forEach((each) => {
+    const scaledG = p5.Vector.mult(gravity, each.mass);
+    each.applyForce(scaledG);
+    each.applyForce(wind);
+    each.update();
+    each.display();
+  });
+
+  emitter.createBall();
+  emitter.applyGravity(gravity);
+  emitter.applyForce(wind);
+  emitter.update();
+  emitter.display();
+}
+
+function mousePressed() {
+  for (let n = 0; n < balls.length; n++) {
+    balls[n] = new Ball(random(width), 0, random(1, 20), random(360), 100, 50);
+  }
+}

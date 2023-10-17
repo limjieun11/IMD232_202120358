@@ -3,37 +3,55 @@ const rNum = 8;
 let gridC;
 let gridR;
 let angleBegin = 0;
-let angleStep = 5; // 느린 속도로 변경
+let angleBeginVel = 1;
+let angleStep = 1;
+// let angle = 15;
 
 function setup() {
-  createCanvas(800, 800);
+  setCanvasContainer('canvas', 1, 1, true);
   colorMode(HSL, 360, 100, 100, 100);
   background(360, 0, 100);
-  gridC = width / (cNum + 2);
-  gridR = height / rNum;
+
+  const margin = min(width, height) / 150;
+
+  gridC = (width - margin) / cNum;
+  gridR = (height - margin) / rNum;
 }
 
 function draw() {
   background(360, 0, 100);
 
-  for (let r = 0; r < rNum; r++) {
-    for (let c = 0; c < cNum; c++) {
-      const x = gridC + c * gridC;
-      const y = r * gridR;
-
+  for (let a = 0; a < rNum; a++) {
+    for (let b = 0; b < cNum; b++) {
       push();
+
+      const x = gridC * b + gridC / 2;
+      const y = gridR * a + gridR / 2;
+
       translate(x, y);
-      rotate(radians(angleBegin + c * angleStep + r * 15));
-      stroke(90 * ((r * cNum + c) % 4), 80, 70);
+      rotate(radians(angleBegin + b * angleStep));
+
+      const colorIndex = (b + a) % 4;
+      stroke(90 * colorIndex, 80, 70);
+
       line(0, 0, gridC / 4, 0);
       noFill();
       ellipse(0, 0, 50);
+
       fill(0);
       noStroke();
       const circleSize = 15;
       ellipse(gridC / 5, 0, circleSize);
       pop();
-      angleBegin += 1; // 매 프레임마다 1도씩 증가
     }
   }
+  angleBegin += angleBeginVel; // 각도 증가
+
+  if (angleStep == 1) {
+    angleBegin += 15; // angleStep이 1도일 때 15도를 더함
+  }
+
+  // 다음 행의 시작 각도를 계산하여 현재 각도와 다음 행의 각도를 연결
+  // let nextRowAngleBegin = angleBegin + cNum * angleStep;
+  // angleBegin = nextRowAngleBegin % 360;
 }

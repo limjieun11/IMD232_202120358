@@ -36,7 +36,7 @@ function mousePressed() {
 
 function reset() {
   for (let a = 0; a < 45; a++) {
-    bodies[a] = new Body(random(width), random(height), random(0.1, 2));
+    bodies[a] = new Body(random(width), random(height), random(16, 100));
   }
 }
 

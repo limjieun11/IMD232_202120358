@@ -1,9 +1,9 @@
 class Body {
-  constructor(x, y) {
+  constructor(x, y, mass) {
     this.pos = createVector(x, y);
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0);
-    this.mass = random(16, 100);
+    this.mass = mass;
     this.rad = this.mass ** (1 / 2) * 4;
     this.velVisualization = createVector(0, 0);
     this.accVisualization = createVector(0, 0);
@@ -42,21 +42,21 @@ class Body {
     circle(this.pos.x, this.pos.y, this.rad * 2);
   }
 
-  displayVectors() {
-    noFill();
-    stroke('red');
-    line(
-      this.pos.x,
-      this.pos.y,
-      this.pos.x + this.velVisualization.x,
-      this.pos.y + this.velVisualization.y
-    );
-    stroke('blue');
-    line(
-      this.pos.x,
-      this.pos.y,
-      this.pos.x + this.accVisualization.x,
-      this.pos.y + this.accVisualization.y
-    );
-  }
+  // displayVectors() {
+  //   noFill();
+  //   stroke('red');
+  //   line(
+  //     this.pos.x,
+  //     this.pos.y,
+  //     this.pos.x + this.velVisualization.x,
+  //     this.pos.y + this.velVisualization.y
+  //   );
+  //   stroke('blue');
+  //   line(
+  //     this.pos.x,
+  //     this.pos.y,
+  //     this.pos.x + this.accVisualization.x,
+  //     this.pos.y + this.accVisualization.y
+  //   );
+  // }
 }

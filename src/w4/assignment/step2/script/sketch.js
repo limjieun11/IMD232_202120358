@@ -10,7 +10,7 @@ function setup() {
   setCanvasContainer('canvas', 3, 2, true);
   background(255);
   mover = new Mover(width / 2, height / 2, 20);
-  gravity = createVector(0, 0.1);
+  gravity = createVector(0, 0.2);
   dragForce = createVector();
   mVec = createVector(mouseX, mouseY);
   pMVec = createVector(pmouseX, pmouseY);
@@ -60,7 +60,7 @@ function mouseDragged() {
     pMVec.set(mVec);
 
     let speed = force.mag();
-    dragForce.mult(speed * 30);
+    dragForce.mult(speed * 25);
   } else {
     dragForce.set(0, 0);
   }

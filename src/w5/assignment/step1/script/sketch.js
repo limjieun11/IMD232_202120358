@@ -28,7 +28,7 @@ function draw() {
       const y = gridR * a + gridR / 2;
 
       translate(x, y);
-      rotate(radians(angleBegin + b * angleStep));
+      rotate(radians(angleBegin + (a * cNum + b) * angleStep));
 
       const colorIndex = (b + a) % 4;
       stroke(90 * colorIndex, 80, 70);
