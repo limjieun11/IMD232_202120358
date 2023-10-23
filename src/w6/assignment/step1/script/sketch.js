@@ -12,7 +12,6 @@ function setup() {
 
 function draw() {
   background(360, 0, 100);
-  // 캔버스를 갱신하지 않고, 파티클 시스템을 업데이트 및 그립니다.
   emitter.update();
   emitter.display();
   console.log('파티클 현재 갯수: ' + emitter.particles.length);

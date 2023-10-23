@@ -1,14 +1,13 @@
 class Particle {
   constructor(x, y, initialVelocity, mass) {
     this.pos = createVector(x, y);
-    this.vel = initialVelocity.mult(3); // 초기 속도
+    this.vel = initialVelocity.mult(3);
     this.acc = createVector(0, 0);
     this.radius = 10;
     this.lifespan = 60;
     this.mass = mass;
-    this.hue = random(0, 360); // 랜덤한 Hue 값 (0에서 360 사이)
+    this.hue = random(0, 360);
   }
-
   applyForce(force) {
     this.acc.add(force);
   }

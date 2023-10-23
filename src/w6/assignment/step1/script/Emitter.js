@@ -5,8 +5,8 @@ class Emitter {
 
   update() {
     if (random(1) < 0.5) {
-      let x = random(width); // 랜덤한 x 위치
-      let particle = new Particle(x, -50); // 시작 위치를 캔버스 위쪽으로 변경
+      let x = random(width);
+      let particle = new Particle(x, -50);
       this.particles.push(particle);
     }
 
