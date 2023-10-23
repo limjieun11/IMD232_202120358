@@ -20,7 +20,11 @@ function setup() {
   setCanvasContainer('canvas', 2, 1, true);
   colorMode(HSL, 360, 100, 100, 100);
   gravity = createVector(0, 0.1);
-  emitter = new Emitter(width / 2, height / 2);
+  emitter = new Emitter();
+
+  for (let n = 0; n < 100; n++) {
+    emitter.emit(1, width / 2, height / 2);
+  }
 }
 
 function draw() {
@@ -31,5 +35,5 @@ function draw() {
 }
 
 function mouseClicked() {
-  emitter.emit(100, mouseX, mouseY); // 파티클을 100개 생성
+  emitter.emit(100, mouseX, mouseY);
 }
