@@ -41,7 +41,7 @@ function setup() {
   group = Body.nextGroup(true);
 
   ropeA = Composites.stack(
-    100,
+    150,
     50,
     8,
     1,
@@ -84,7 +84,7 @@ function setup() {
   //--------------------------------------------------------------------------------------------------
   group = Body.nextGroup(true);
 
-  ropeB = Composites.stack(350, 50, 10, 1, 10, 10, function (x, y) {
+  ropeB = Composites.stack(400, 50, 10, 1, 10, 10, function (x, y) {
     return Bodies.circle(x, y, 20, { collisionFilter: { group: group } });
   });
 
@@ -106,7 +106,7 @@ function setup() {
   //--------------------------------------------------------------------------------------------------
   group = Body.nextGroup(true);
 
-  ropeC = Composites.stack(600, 50, 13, 1, 10, 10, function (x, y) {
+  ropeC = Composites.stack(650, 50, 13, 1, 10, 10, function (x, y) {
     // vertices = Vertices.fromPath('10 30 50 0 50 20 0 20');
     return Bodies.rectangle(x - 20, y, 50, 20, {
       collisionFilter: { group: group },
@@ -158,20 +158,6 @@ function draw() {
 
   for (let composite of world.composites) {
     for (let body of composite.bodies) {
-      fill('blue');
-      noStroke();
-
-      // 각 도형에 원하는 색상을 채워 그립니다.
-      beginShape();
-      for (let vert of body.vertices) {
-        vertex(vert.x, vert.y);
-      }
-      endShape(CLOSE);
-    }
-  }
-
-  for (let composite of world.composites) {
-    for (let body of composite.bodies) {
       // 무작위 색상 설정
       fill('skyblue');
       noStroke();
@@ -179,7 +165,9 @@ function draw() {
       // 각 도형에 원하는 색상을 채워 그립니다.
       beginShape();
       for (let vert of body.vertices) {
-        vertex(vert.x, vert.y);
+        let adjustedX = (vert.x / originalWidth) * width;
+        let adjustedY = (vert.y / originalHeight) * height;
+        vertex(adjustedX, adjustedY);
       }
       endShape(CLOSE);
     }
