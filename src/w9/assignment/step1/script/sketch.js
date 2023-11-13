@@ -177,3 +177,7 @@ function draw() {
   // });
   // endShape(CLOSE);
 }
+
+function mouseReleased() {
+  released = true;
+}
