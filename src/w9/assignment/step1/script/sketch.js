@@ -40,12 +40,31 @@ function setup() {
   //--------------------------------------------------------------------------------------------------
   group = Body.nextGroup(true);
 
-  ropeA = Composites.stack(100, 50, 8, 1, 10, 10, function (x, y) {
-    // vertices = Vertices.fromPath('10 30 50 0 50 20 0 20');
-    return Bodies.rectangle(x, y, 50, 20, {
-      collisionFilter: { group: group },
-    });
-  });
+  ropeA = Composites.stack(
+    100,
+    50,
+    8,
+    1,
+    10,
+    10,
+    function (x, y, column, row, index) {
+      // 랜덤한 정점 수 및 위치를 가지는 도형 생성
+      let numVertices = Math.floor(Math.random() * 6) + 5; // 5에서 10까지의 랜덤한 정점 수
+      let radius = 25;
+      let vertices = [];
+
+      for (let i = 0; i < numVertices; i++) {
+        let angle = (i / numVertices) * (2 * Math.PI); // 정점이 원 주위를 이동하도록 설정
+        let offsetX = Math.cos(angle) * radius;
+        let offsetY = Math.sin(angle) * radius;
+        vertices.push({ x: x + offsetX, y: y + offsetY });
+      }
+
+      return Bodies.fromVertices(x, y, vertices, {
+        collisionFilter: { group: group },
+      });
+    }
+  );
 
   Composites.chain(ropeA, 0.5, 0, -0.5, 0, {
     stiffness: 0.8,
@@ -139,7 +158,6 @@ function draw() {
 
   for (let composite of world.composites) {
     for (let body of composite.bodies) {
-      // 무작위 색상 설정
       fill('blue');
       noStroke();
 
