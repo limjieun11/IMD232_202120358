@@ -172,16 +172,6 @@ function draw() {
       endShape(CLOSE);
     }
   }
-
-  // fill(0);
-  // beginShape();
-  // ropeA.bodies.forEach((each) => {
-  //   vertex(
-  //     (each.x / originalWidth) * width,
-  //     (each.y / originalHeight) * height
-  //   );
-  // });
-  // endShape(CLOSE);
 }
 
 function mouseReleased() {
