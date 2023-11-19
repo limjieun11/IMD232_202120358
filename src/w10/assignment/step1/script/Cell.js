@@ -60,18 +60,6 @@ class Cell {
     }
 
     rect(this.x, this.y, this.w, this.h);
-
-    // 마우스 위치에 따라 특정 셀 강조 표시
-    if (
-      mouseX >= this.x &&
-      mouseX <= this.x + this.w &&
-      mouseY >= this.y &&
-      mouseY <= this.y + this.h
-    ) {
-      noFill();
-      stroke(0);
-      rect(this.x, this.y, this.w, this.h);
-    }
   }
 
   // 마우스 클릭 시 상태 토글

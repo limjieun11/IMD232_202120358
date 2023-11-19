@@ -29,8 +29,24 @@ function setup() {
         getIdx(row + 1, col - 1),
         getIdx(row, col - 1),
       ];
-
-      // ... (기존 이웃 설정 코드 유지)
+      //   if (col === 0) {
+      //     neighborsIdx[0] = -1;
+      //     neighborsIdx[6] = -1;
+      //     neighborsIdx[7] = -1;
+      //   } else if (col === colNum - 1) {
+      //     neighborsIdx[2] = -1;
+      //     neighborsIdx[3] = -1;
+      //     neighborsIdx[4] = -1;
+      //   }
+      //   if (row === 0) {
+      //     neighborsIdx[0] = -1;
+      //     neighborsIdx[1] = -1;
+      //     neighborsIdx[2] = -1;
+      //   } else if (row === rowNum - 1) {
+      //     neighborsIdx[4] = -1;
+      //     neighborsIdx[5] = -1;
+      //     neighborsIdx[6] = -1;
+      //   }
 
       const neighbors = [];
       neighborsIdx.forEach((eachIdx) => {
