@@ -8,16 +8,16 @@ class Cell {
     this.nextState = state;
     this.idx = idx;
     this.friends = [];
-    this.rule = [
-      false, //111 = 7
-      false, //110 = 6
-      false, //101 = 5
-      true, //100 = 4
-      true, //011 = 3
-      true, //010 = 2
-      true, //001 = 1
-      false, //000 = 0
-    ];
+    // this.rule = [
+    //   false, //111 = 7
+    //   false, //110 = 6
+    //   false, //101 = 5
+    //   true, //100 = 4
+    //   true, //011 = 3
+    //   true, //010 = 2
+    //   true, //001 = 1
+    //   false, //000 = 0
+    // ];
   }
 
   addFriends(cellArray) {
@@ -51,8 +51,8 @@ class Cell {
     // console.log('binary', binaryString);
     const decimalNum = parseInt(binaryString, 2);
     // console.log('decimalNum', decimalNum);
-    const ruleIdx = this.rule.length - 1 - decimalNum;
-    this.nextState = this.rule[ruleIdx];
+    const ruleIdx = rule.length - 1 - decimalNum;
+    this.nextState = rule[ruleIdx];
     // console.log(this.nextState);
   }
 

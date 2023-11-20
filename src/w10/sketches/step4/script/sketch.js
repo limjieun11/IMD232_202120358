@@ -1,5 +1,26 @@
 let cells = [];
 
+rule = [
+  false, //111 = 7
+  false, //110 = 6
+  false, //101 = 5
+  true, //100 = 4
+  true, //011 = 3
+  true, //010 = 2
+  true, //001 = 1
+  false, //000 = 0
+];
+
+function setRule(denaryNum) {
+  let binaryString = denaryNum.toString(2);
+  while (binaryString.length < 8) {
+    binaryString = '0' + binaryString;
+  }
+  for (let idx = 0; idx < 8; idx++) {
+    this.rule[idx] = binaryString[idx] === '1';
+  }
+}
+
 const colNum = 51,
   rowNum = 1;
 
@@ -33,6 +54,8 @@ function setup() {
   cells.forEach((eachCell) => {
     eachCell.addFriends(cells);
   });
+
+  setRule(250);
 
   console.log(cells);
 
