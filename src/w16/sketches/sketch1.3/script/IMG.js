@@ -12,8 +12,8 @@ function generateRandomPos(x, y, mag) {
 }
 
 /**
-  Dynamically adds/removes particles to make up the next image.
-  */
+      Dynamically adds/removes particles to make up the next image.
+      */
 function nextImage() {
   // Switch index to next image.
   imgIndex++;

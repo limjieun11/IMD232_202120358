@@ -1,10 +1,10 @@
 var imgs = [];
 var imgNames = [
-  './script/IMG_1.jpg',
-  'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/15e30876-73ca-433c-be3e-59ac016a0d49/d73mcku-6a0d825f-75b4-4a1b-b6c2-3c8b36ea6e55.png/v1/fill/w_1024,h_741/apple_30_year_anniversary_logo_by_nakkinya_d73mcku-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzQxIiwicGF0aCI6IlwvZlwvMTVlMzA4NzYtNzNjYS00MzNjLWJlM2UtNTlhYzAxNmEwZDQ5XC9kNzNtY2t1LTZhMGQ4MjVmLTc1YjQtNGExYi1iNmMyLTNjOGIzNmVhNmU1NS5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.iFpCKyZRQZm8eanHMbq3IhuhNi5GTbwUYg1iKX6_lBg',
-  //   'manuscript-font-illuminated_b.jpg',
+  // './assets/자산 4.png',
+  './assets/자산 5.png',
+  './assets/자산 6.png',
+  './assets/자산 7@2x.png',
 ];
-//var imgNames = ["IMG_5746.JPG","IMG_5745.JPG","IMG_5748 2.JPG"];
 var imgIndex = -1;
 
 var loadPercentage = 0.045; // 0 to 1.0
@@ -28,7 +28,7 @@ function preload() {
 }
 
 function setup() {
-  setCanvasContainer('canvas', 2, 3, true);
+  setCanvasContainer('canvas', 1000, 1000, true);
   for (let i = 0; i < imgNames.length; i++) {
     imgs[i].resize(imgs[i].width * 0.7, imgs[i].height * 0.7);
   }
@@ -119,18 +119,18 @@ function keyPressed() {
   nextImage();
 }
 
-function saver() {
-  save(
-    'img_' +
-      month() +
-      '-' +
-      day() +
-      '_' +
-      hour() +
-      '-' +
-      minute() +
-      '-' +
-      second() +
-      '.jpg'
-  );
-}
+// function saver() {
+//   save(
+//     'img_' +
+//       month() +
+//       '-' +
+//       day() +
+//       '_' +
+//       hour() +
+//       '-' +
+//       minute() +
+//       '-' +
+//       second() +
+//       '.jpg'
+//   );
+// }
