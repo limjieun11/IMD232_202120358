@@ -11,18 +11,15 @@ function generateRandomPos(x, y, mag) {
   return pos;
 }
 
-/**
-      Dynamically adds/removes particles to make up the next image.
-      */
 function nextImage() {
-  // Switch index to next image.
+  // 다음 이미지로 체인지
   imgIndex++;
   if (imgIndex > imgs.length - 1) {
     imgIndex = 0;
   }
   imgs[imgIndex].loadPixels();
 
-  // Create an array of indexes from particle array.
+  //파티클 배열생성
   var particleIndexes = [];
   for (var i = 0; i < allParticles.length; i++) {
     particleIndexes.push(i);
@@ -30,10 +27,10 @@ function nextImage() {
 
   var pixelIndex = 0;
 
-  // Go through each pixel of the image.
+  // 이미지 픽셀
   for (var y = 0; y < imgs[imgIndex].height; y++) {
     for (var x = 0; x < imgs[imgIndex].width; x++) {
-      // Get the pixel's color.
+      //이미지 픽셀 컬러
       var pixelR = imgs[imgIndex].pixels[pixelIndex];
       var pixelG = imgs[imgIndex].pixels[pixelIndex + 1];
       var pixelB = imgs[imgIndex].pixels[pixelIndex + 2];
@@ -41,7 +38,6 @@ function nextImage() {
 
       pixelIndex += 4;
 
-      // Give it small odds that we'll assign a particle to this pixel.
       if (random(1.0) > loadPercentage * resSlider.slider.value()) {
         continue;
       }
@@ -49,14 +45,14 @@ function nextImage() {
       var pixelColor = color(pixelR, pixelG, pixelB);
 
       if (particleIndexes.length > 0) {
-        // Re-use existing particle.
+        //기존 파티클 사용
         var index = particleIndexes.splice(
           random(particleIndexes.length - 1),
           1
         );
         var newParticle = allParticles[index];
       } else {
-        // Create a new particle.
+        // 새로운 파티클 생성
         var newParticle = new Particle(width / 2, height / 2);
         allParticles.push(newParticle);
       }
@@ -67,7 +63,7 @@ function nextImage() {
     }
   }
 
-  // Kill off any left over particles that aren't assigned to anything.
+  //나머지 파티클 제거
   if (particleIndexes.length > 0) {
     for (var i = 0; i < particleIndexes.length; i++) {
       allParticles[particleIndexes[i]].kill();

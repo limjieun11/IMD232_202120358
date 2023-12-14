@@ -1,6 +1,6 @@
 const RESOLUTION = 5;
 
-let imgUrl = './script/IMG_1.jpg';
+let imgUrl = './script/peace.png';
 let img;
 let particles = [];
 
