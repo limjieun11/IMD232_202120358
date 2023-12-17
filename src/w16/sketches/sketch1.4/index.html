@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../../../style/style.css" />
     <link rel="stylesheet" href="../../../../plugin/prism/prism.css" />
     <script src="../../../../plugin/prism/prism.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
     <script src="../../../../script/p5Util.js" defer></script>
     <script src="./script/Particle.js" defer></script>
     <script src="./script/sketch.js" defer></script>
@@ -20,18 +20,18 @@
         font-family: 'Kalnia', serif;
         text-align: center;
       }
-      #container {
-        margin: 0;
-        padding: 0;
+      #btn {
+        padding-top: 0;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
       }
       #next-button {
+        cursor: pointer;
         font-family: 'Kalnia', serif;
         padding: 10px 20px;
         border: none;
-        border-radius: 3px;
+        border-radius: 0.75rem;
       }
     </style>
   </head>
@@ -39,16 +39,13 @@
     <div class="viewport">
       <header>
         <section>
-          <div class="container"></div>
-        </section>
-      </header>
-      <main>
-        <section>
-          <div class="container">
+          <div class="container" id="titleText">
             <h2>Today, how are you feeling?</h2>
           </div>
         </section>
-        <div class="container">
+      </header>
+      <main>
+        <div class="container" id="btn">
           <button id="next-button" onclick="nextImage()">Next Emotion?</button>
         </div>
         <section>
@@ -57,11 +54,6 @@
           </div>
         </section>
       </main>
-      <!-- <footer>
-        <section>
-          <div class="container"></div>
-        </section>
-      </footer> -->
     </div>
   </body>
 </html>
