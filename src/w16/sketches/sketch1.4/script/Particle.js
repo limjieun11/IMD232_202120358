@@ -14,8 +14,8 @@ class Particle {
     const mouse = createVector(mouseX, mouseY);
     const d = p5.Vector.sub(mouse, this.pos);
     const distance = d.mag();
-    if (distance < 60) {
-      d.setMag(-4);
+    if (distance < 70) {
+      d.setMag(-10);
       this.pos.add(d);
     } else {
       const dist = p5.Vector.sub(this.targetPos, this.pos);

@@ -4,6 +4,7 @@ const imgs = [];
 const pixels = [];
 const paths = [
   './assets/HAPPY.png',
+  './assets/DEPRESSION.png',
   './assets/PEACE.png',
   './assets/ANGER.png',
 ];
@@ -16,7 +17,7 @@ function preload() {
 }
 
 function setup() {
-  setCanvasContainer('canvas', 400, 400, true);
+  setCanvasContainer('canvas', 3, 2, true);
 
   pixels.push(readPixels(imgs[0]));
 
